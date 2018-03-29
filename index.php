@@ -1,3 +1,25 @@
+<?php
+
+  require_once("config.php");
+  $aviso = null;
+
+  if(!empty($_POST['cpf'])){
+    $cpfu = new CPF($_POST['cpf']);
+    if(isset($cpfu->digitos[0]) && isset($cpfu->digitos[1])){
+    $aviso = "CPF VÁLIDO: ".$_POST['cpf']."-".$cpfu->digitos[0].$cpfu->digitos[1];
+    
+    //header("Location:index.php");
+    }
+  }
+
+
+
+
+
+ ?>
+
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -20,12 +42,32 @@
   </div>
 
     <div class="col-md-6">
-      <form method="post">  
+      <form method="post" action="index.php">  
      <center><h1 class="gerador-titulo">GERADOR DE CPF</h1></center>
 
      <input class="form-control" type="tel" size="" maxlength="9" name="cpf" placeholder="Informe os 9 primeiros dígitos do CPF">
      <input class="btn btn-primary btn-block" type="submit" value="VALIDAR">
      <br>
+
+
+
+   <?php  if($aviso):  ?>  
+
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+       <center><strong><?php echo $aviso;  ?></strong></center>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div> 
+
+
+
+
+
+
+   <?php   endif;?>  
+
+
 
                      <!-- Aviso apenas números-->
 <!--

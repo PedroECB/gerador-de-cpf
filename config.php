@@ -10,4 +10,4 @@ spl_autoload_register(function($nomeClass){
 });
 
 
-$user = new CPF("111444777");
+$user = new CPF("054731815");
